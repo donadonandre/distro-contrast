@@ -1,0 +1,15 @@
+server:
+  port: 5100
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: distroContrastFront
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.deserializer.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.deserializer.JsonDeserializer

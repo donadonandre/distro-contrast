@@ -1,4 +1,4 @@
-package com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.events;
+package com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.events;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Queue;

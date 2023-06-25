@@ -4,8 +4,8 @@ import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceFor
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceResponse;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.Device;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.user.DataUserResponse;
-import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.events.dto.DeviceEventDto;
-import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.events.dto.UserDeviceEventRequest;
+import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.events.dto.DeviceEventDto;
+import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.events.dto.UserDeviceEventRequest;
 
 public class DeviceMapper {
     

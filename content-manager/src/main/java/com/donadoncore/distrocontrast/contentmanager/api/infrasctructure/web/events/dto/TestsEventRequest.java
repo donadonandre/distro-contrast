@@ -1,4 +1,4 @@
-package com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.events.dto;
+package com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.events.dto;
 
 import java.util.List;
 

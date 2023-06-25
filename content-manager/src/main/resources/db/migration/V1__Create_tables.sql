@@ -34,10 +34,13 @@ create table if not exists test (
 );
 
 create table if not exists events (
-    id uuid not null constraint events_id primary key,
-    kind varchar not null,
-    date_time timestamp without time zone,
-    is_published boolean,
-    log text
+    date_time timestamp without time zone not null constraint events_id primary key,
+    kind varchar(20) not null,
+    is_done boolean default false,
+    payload text
 );
+
+CREATE INDEX idx_events_is_done ON events (is_done);
+CREATE INDEX idx_events_date_time_is_done ON events (date_time, is_done);
+-- CREATE INDEX idx_events_kind_is_done ON events (kind, is_done);
 

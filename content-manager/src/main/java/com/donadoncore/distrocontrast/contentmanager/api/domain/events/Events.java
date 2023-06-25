@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "distro")
+@Table(name = "events")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,15 +16,13 @@ import java.util.UUID;
 public class Events {
 
     @Id
-    private UUID uuid;
-
-    private String kind;
-
-    @Column(name = "date_time")
     private LocalDateTime dateTime;
 
-    @Column(name = "is_published")
-    private Boolean isPublished;
+    @Enumerated(EnumType.STRING)
+    private EventKind kind;
 
-    private String log;
+    @Column(name = "is_done")
+    private Boolean isDone;
+
+    private String payload;
 }

@@ -1,4 +1,4 @@
-package com.donadoncore.distrocontrast.contentquery.infrastructure.persistence.Tests;
+package com.donadoncore.distrocontrast.contentquery.infrastructure.persistence.tests;
 
 import com.donadoncore.distrocontrast.contentquery.domain.tests.TestsDocument;
 import org.springframework.data.mongodb.repository.MongoRepository;

@@ -16,7 +16,6 @@ public class MessageConsumer {
 
     private final ObjectMapper objectMapper;
 
-    @RabbitListener(queues = "${content.creator.event.consumer.queue.name}")
     @Scheduled(fixedRate = 900_000)
     public void receiveMessage(byte[] message) {
         try {

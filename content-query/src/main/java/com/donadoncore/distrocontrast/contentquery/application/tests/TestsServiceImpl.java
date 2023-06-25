@@ -1,7 +1,7 @@
 package com.donadoncore.distrocontrast.contentquery.application.tests;
 
 import com.donadoncore.distrocontrast.contentquery.domain.tests.DeviceMessage;
-import com.donadoncore.distrocontrast.contentquery.infrastructure.persistence.Tests.TestsRepository;
+import com.donadoncore.distrocontrast.contentquery.infrastructure.persistence.tests.TestsRepository;
 import com.donadoncore.distrocontrast.contentquery.domain.tests.TestsDocument;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class TestsServiceImpl implements TestsService {
         Optional<TestsDocument> testsFromUserWithDevice = testsRepository.findByUserAndDevice(deviceMessage.getRelatedId(), deviceMessage.getDevice().getId());
 
         if (testsFromUserWithDevice.isPresent()) {
-            TestsDocument testsDocument = testsFromUserWithDevice.get();
+            var testsDocument = testsFromUserWithDevice.get();
             // testsDocument.getTests().addAll(TestsMapper.toEntity(deviceMessage.getTests()));
             testsRepository.save(testsDocument);
         }

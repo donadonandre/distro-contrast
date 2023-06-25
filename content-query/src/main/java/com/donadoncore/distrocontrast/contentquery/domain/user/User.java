@@ -15,7 +15,7 @@ public class User {
     @Id
     private String id;
 
-    private String sharedId;
+    private String sharedKey;
 
     private String name;
 

@@ -26,6 +26,8 @@ public class User {
 
     private String name;
 
+    private String sharedKey;
+
     @OneToMany
     private List<Device> devices;
 }

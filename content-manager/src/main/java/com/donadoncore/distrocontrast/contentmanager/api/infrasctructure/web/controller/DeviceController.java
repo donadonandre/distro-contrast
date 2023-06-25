@@ -23,7 +23,7 @@ public class DeviceController {
             @RequestBody DeviceFormRequest deviceFormRequest,
             UriComponentsBuilder uriBuilder
             ) {
-        DeviceResponse response = deviceService.insert(userId, deviceFormRequest);
+        var response = deviceService.insert(userId, deviceFormRequest);
         var uri = uriBuilder.path("/devices/{id}").buildAndExpand(response.id()).toUri();
         return ResponseEntity.created(uri).body(response);
     }

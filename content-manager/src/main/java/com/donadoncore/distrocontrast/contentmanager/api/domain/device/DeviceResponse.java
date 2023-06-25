@@ -1,6 +1,6 @@
 package com.donadoncore.distrocontrast.contentmanager.api.domain.device;
 
-import com.donadoncore.distrocontrast.contentmanager.api.domain.user.DataUserRespose;
+import com.donadoncore.distrocontrast.contentmanager.api.domain.user.DataUserResponse;
 
 public record DeviceResponse(
         Long id,
@@ -17,5 +17,5 @@ public record DeviceResponse(
 
         String cardVideo,
 
-        DataUserRespose user
+        DataUserResponse user
 ) {}

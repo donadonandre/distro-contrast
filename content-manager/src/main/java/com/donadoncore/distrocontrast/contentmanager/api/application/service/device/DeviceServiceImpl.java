@@ -1,11 +1,14 @@
 package com.donadoncore.distrocontrast.contentmanager.api.application.service.device;
 
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceResponse;
+import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.events.MessageProducer;
 import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.persistence.device.DeviceRepository;
 import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.persistence.user.UserRepository;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceFormRequest;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.Device;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.user.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +21,27 @@ public class DeviceServiceImpl implements DeviceService {
 
     private final DeviceRepository deviceRepository;
     private final UserRepository userRepository;
+    private final MessageProducer messageProducer;
+    private final ObjectMapper objectMapper;
 
     @Override
     public DeviceResponse insert(Long userId, DeviceFormRequest deviceRequest) {
-        User user = userRepository.findById(userId).orElseThrow();
+        var user = userRepository.findById(userId).orElseThrow();
 
-        Device device = DeviceMapper.toEntity(deviceRequest);
+        var device = DeviceMapper.toEntity(deviceRequest);
         device.setUser(user);
         device = deviceRepository.save(device);
+
+        try {
+            messageProducer.sendNewDeviceMessage(
+                    objectMapper.writeValueAsString(
+                            DeviceMapper.toEventResource(device)
+                    )
+            );
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
         return DeviceMapper.toResponseDto(device);
     }
 

@@ -17,7 +17,7 @@ public class DistroController {
 
     @PostMapping
     public ResponseEntity insert(@RequestBody DistroFormRequest formRequest, UriComponentsBuilder uriBuilder) {
-        DistroResponse response = distroService.insert(formRequest);
+        var response = distroService.insert(formRequest);
         var uri = uriBuilder.path("/distros/{id}").buildAndExpand(response.id()).toUri();
         return ResponseEntity.created(uri).body(response);
     }

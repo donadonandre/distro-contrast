@@ -18,7 +18,7 @@ public class DistroServiceImpl implements DistroService {
 
     @Override
     public DistroResponse insert(DistroFormRequest request) {
-        Distro distro = DistroMapper.toEntity(request);
+        var distro = DistroMapper.toEntity(request);
         distro = distroRepository.save(distro);
         return DistroMapper.toResponse(distro);
     }

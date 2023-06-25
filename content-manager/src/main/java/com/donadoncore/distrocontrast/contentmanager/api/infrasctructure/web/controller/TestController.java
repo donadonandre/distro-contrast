@@ -23,7 +23,7 @@ public class TestController {
             @RequestBody TestFormRequest formRequest,
             UriComponentsBuilder uriBuilder
             ) {
-        TestResponse response = testService.insert(deviceId, formRequest);
+        var response = testService.insert(deviceId, formRequest);
         var uri = uriBuilder.path("/tests/{id}").buildAndExpand(response.id()).toUri();
         return ResponseEntity.created(uri).body(response);
     }

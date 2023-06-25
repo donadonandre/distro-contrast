@@ -23,10 +23,10 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public TestResponse insert(Long deviceId, TestFormRequest formRequest) {
-        Device device = deviceRepository.findById(deviceId).orElseThrow();
-        Distro distro = distroRepository.findById(formRequest.distroId()).orElseThrow();
+        var device = deviceRepository.findById(deviceId).orElseThrow();
+        var distro = distroRepository.findById(formRequest.distroId()).orElseThrow();
 
-        Test test = TestMapper.toEntity(formRequest, device, distro);
+        var test = TestMapper.toEntity(formRequest, device, distro);
         test = testRepository.save(test);
         return TestMapper.toResponse(test);
     }

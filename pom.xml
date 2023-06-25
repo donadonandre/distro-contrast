@@ -17,6 +17,7 @@
     <modules>
         <module>content-manager</module>
         <module>content-query</module>
+        <module>user-manager</module>
     </modules>
 
 </project>

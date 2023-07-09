@@ -1,19 +1,18 @@
 package com.donadoncore.distrocontrast.usermanager.api.domain.user;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "user")
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "users")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String sharedId;
 
@@ -22,4 +21,6 @@ public class User {
     private String email;
 
     private String password;
+
+    private List<UserLink> links;
 }

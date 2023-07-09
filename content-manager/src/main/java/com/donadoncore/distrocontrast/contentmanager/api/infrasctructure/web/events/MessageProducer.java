@@ -12,18 +12,18 @@ import org.springframework.stereotype.Component;
 public class MessageProducer {
 
     private final RabbitTemplate rabbitTemplate;
-    private final Queue queue;
+
     @Qualifier(value = "topicNewDevice")
     private final TopicExchange newDeviceTopic;
     @Qualifier(value = "topicTests")
     private final TopicExchange testsTopic;
 
     public void sendNewDeviceMessage(String message) {
-        rabbitTemplate.convertAndSend(newDeviceTopic.getName(), queue.getName(), message);
+        rabbitTemplate.convertAndSend(newDeviceTopic.getName(), "routingKey", message);
     }
 
     public void sendTestsMessage(String message) {
-        rabbitTemplate.convertAndSend(testsTopic.getName(), queue.getName(), message);
+        rabbitTemplate.convertAndSend(testsTopic.getName(), "routingKey", message);
     }
 
 }

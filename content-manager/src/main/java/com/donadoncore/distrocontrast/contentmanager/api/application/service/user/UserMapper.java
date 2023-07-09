@@ -1,4 +1,4 @@
-package com.donadoncore.distrocontrast.contentmanager.api.application.service.device;
+package com.donadoncore.distrocontrast.contentmanager.api.application.service.user;
 
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceFormRequest;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceResponse;
@@ -7,9 +7,9 @@ import com.donadoncore.distrocontrast.contentmanager.api.domain.user.DataUserRes
 import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.events.dto.DeviceEventDto;
 import com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.events.dto.UserDeviceEventRequest;
 
-public class DeviceMapper {
+public class UserMapper {
     
-    public static Device toEntity(DeviceFormRequest dto) {
+    public static Device toDeviceEntity(DeviceFormRequest dto) {
         return Device.builder()
                 .type(dto.type())
                 .brand(dto.brand())
@@ -21,17 +21,17 @@ public class DeviceMapper {
                 .build();
     }
     
-    public static DeviceResponse toResponseDto(Device device) {
+    public static DeviceResponse toDeviceResponse(Device device) {
         return new DeviceResponse(
-                device.getId(),
+                device.getSharedId(),
+                device.getName(),
                 device.getType().toString(),
                 device.getBrand(),
                 device.getModel(),
                 device.getProcessor(),
                 device.getRamMemory(),
                 device.getDisk(),
-                device.getCardVideo(),
-                new DataUserResponse(device.getUser().getId(), device.getUser().getEmail(), device.getUser().getName())
+                device.getCardVideo()
         );
     }
 

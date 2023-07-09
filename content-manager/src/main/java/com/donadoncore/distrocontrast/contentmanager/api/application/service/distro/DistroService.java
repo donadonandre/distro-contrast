@@ -9,7 +9,7 @@ public interface DistroService {
 
     DistroResponse insert(DistroFormRequest request);
 
-    DistroResponse getById(Long id);
+    DistroResponse getById(String id);
     List<DistroResponse> getByName(String name);
     List<DistroResponse> getByBasedOn(String basedOn);
 

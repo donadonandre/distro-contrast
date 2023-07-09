@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface DeviceService {
 
-    DeviceResponse insert(Long userId, DeviceFormRequest deviceRequest);
-    DeviceResponse getById(Long id);
+    DeviceResponse insert(String userId, DeviceFormRequest deviceRequest);
+    DeviceResponse getById(String id);
     List<DeviceResponse> getAll(Long userId);
 
 }

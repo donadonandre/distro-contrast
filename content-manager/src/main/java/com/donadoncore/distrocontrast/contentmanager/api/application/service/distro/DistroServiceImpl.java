@@ -24,7 +24,7 @@ public class DistroServiceImpl implements DistroService {
     }
 
     @Override
-    public DistroResponse getById(Long id) {
+    public DistroResponse getById(String id) {
         return distroRepository.findById(id).map(DistroMapper::toResponse).orElseThrow();
     }
 

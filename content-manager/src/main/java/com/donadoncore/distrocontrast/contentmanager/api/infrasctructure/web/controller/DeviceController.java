@@ -1,11 +1,12 @@
 package com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.controller;
 
 import com.donadoncore.distrocontrast.contentmanager.api.application.service.device.DeviceService;
-import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceResponse;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceFormRequest;
+import com.donadoncore.distrocontrast.contentmanager.api.domain.device.DeviceResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -18,8 +19,8 @@ public class DeviceController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity insert(
-            @RequestHeader Long userId,
+    public ResponseEntity<DeviceResponse> insert(
+            @RequestHeader String userId,
             @RequestBody DeviceFormRequest deviceFormRequest,
             UriComponentsBuilder uriBuilder
             ) {

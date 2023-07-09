@@ -2,7 +2,6 @@ package com.donadoncore.distrocontrast.contentmanager.api.infrasctructure.web.co
 
 import com.donadoncore.distrocontrast.contentmanager.api.application.service.distro.DistroService;
 import com.donadoncore.distrocontrast.contentmanager.api.domain.distro.DistroFormRequest;
-import com.donadoncore.distrocontrast.contentmanager.api.domain.distro.DistroResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("distros")
+@RequestMapping("api/v1/distros")
 public class DistroController {
 
     private final DistroService distroService;
@@ -24,7 +23,7 @@ public class DistroController {
 
     @GetMapping("/{id}")
     public ResponseEntity getById(
-            @PathVariable Long id
+            @PathVariable String id
     ) {
         return ResponseEntity.ok(distroService.getById(id));
     }
